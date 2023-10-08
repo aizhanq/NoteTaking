@@ -31,10 +31,13 @@ namespace NoteTaking
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            table.Rows.Add(txtTitle.Text, txtMessage.Text);
+            if(txtTitle.Text.Length > 0) 
+            {
+                table.Rows.Add(txtTitle.Text, txtMessage.Text);
 
-            txtTitle.Clear();
-            txtMessage.Clear();
+                txtTitle.Clear();
+                txtMessage.Clear();
+            }
         }
 
         private void btnRead_Click(object sender, EventArgs e)
@@ -53,6 +56,8 @@ namespace NoteTaking
             int index = dataGridView1.CurrentCell.RowIndex;
 
             table.Rows[index].Delete();
+            txtTitle.Clear();
+            txtMessage.Clear();
         }
     }
 }
